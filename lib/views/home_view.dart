@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'recipe.dart';
+import '../models/recipe.dart';
 
 class HomeView extends StatelessWidget {
   final List<Recipe> recipeList = [

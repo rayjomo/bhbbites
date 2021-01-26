@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_widget.dart';
+import 'package:bhbbites/views/launch_view.dart';
 
 
 void main()
@@ -14,7 +15,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-        home: Home(),
+    //    home: Home(),
+        home: LaunchView(),
+        routes: <String, WidgetBuilder> {
+        '/signUp': (BuildContext context) => Home(),
+          '/home': (BuildContext context) => Home(),
+
+        }
 
        );
 
