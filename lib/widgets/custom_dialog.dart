@@ -34,15 +34,15 @@ class CustomDialog extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black,
-                  blurRadius: 10.0,
-                  offset: const Offset(0.0, 10.0),
+                  blurRadius: 5.0,
+                  offset: const Offset(0.0, 1.0),
                 )
               ]
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                SizedBox(height: 24.0),
+                SizedBox(height: 30.0),
                 AutoSizeText(
                   title,
                   maxLines: 2,
@@ -52,17 +52,17 @@ class CustomDialog extends StatelessWidget {
                     fontSize: 25.0,
                   ),
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 30.0),
                 AutoSizeText(
                     description,
                     maxLines: 4,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                     ),
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 30.0),
                 RaisedButton(
                   color: Colors.orange,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
@@ -70,9 +70,9 @@ class CustomDialog extends StatelessWidget {
                     primaryButtonText,
                     maxLines: 1,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w200,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   onPressed: () {
@@ -81,7 +81,7 @@ class CustomDialog extends StatelessWidget {
                   },
                 ),
 
-                SizedBox(height: 10.0),
+                SizedBox(height: 5.0),
                 showSecondaryButton(context)
               ]
             )
@@ -100,7 +100,7 @@ class CustomDialog extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             color: Colors.black54,
-            fontWeight: FontWeight.w200,
+            fontWeight: FontWeight.w300,
           ),
         ),
         onPressed: () {
