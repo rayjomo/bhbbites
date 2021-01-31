@@ -3,6 +3,7 @@ import 'home_widget.dart';
 import 'package:bhbbites/views/launch_view.dart';
 import 'package:bhbbites/services/auth_service.dart';
 import 'package:bhbbites/views/sign_up_view.dart';
+import 'package:bhbbites/widgets/provider_widget.dart';
 
 
 void main()
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
     //    home: Home(),
           home: HomeController(),
           routes: <String, WidgetBuilder> {
-          '/signUp': (BuildContext context) => SignUpView(),
+          '/signUp': (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp),
+            '/signIn': (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn),
             '/home': (BuildContext context) => HomeController(),
 
           }
@@ -51,14 +53,3 @@ class HomeController extends StatelessWidget {
   }
 }
 
-class Provider extends InheritedWidget {
-  final AuthService auth;
-  Provider({Key key, Widget child, this.auth,}) : super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(InheritedWidget oldWidget) {
-    return true;
-  }
-
-  static Provider of(BuildContext context) => (context.inheritFromWidgetOfExactType(Provider) as Provider);
-}

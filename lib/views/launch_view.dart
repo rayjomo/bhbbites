@@ -82,7 +82,9 @@ class LaunchView extends StatelessWidget {
                   child: Text("Sign In",
                     style: TextStyle(color: Colors.black54, fontSize: 25),
                 ),
-               onPressed: () {},
+               onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/signIn');
+               },
                 )
              ],
            ),
