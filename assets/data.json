@@ -1,0 +1,26 @@
+[
+  {
+    "recipeImage": "images/hawkers.jpg",
+    "recipeName": "The Hawkers",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "age": 20
+  },
+  {
+    "recipeImage": "images/flipping.jpg",
+    "recipeName": "Flipping Noodles",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "age": 50
+  },
+  {
+    "recipeImage": "images/pizzahut.jpg",
+    "recipeName": "Pizza Hut",
+    "placeItems": ["Pizza","Chinese","Fast Food","Italian","Juice"],
+    "age": 20
+  },
+  {
+    "recipeImage": "images/bluehill.jpg",
+    "recipeName": "Blue Hill",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "age": 40
+  }
+]

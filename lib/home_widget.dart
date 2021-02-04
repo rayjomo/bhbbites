@@ -1,9 +1,10 @@
 import 'package:bhbbites/services/auth_service.dart';
+import 'package:bhbbites/views/dashboard_view.dart';
 import 'package:flutter/material.dart';
 import 'pages.dart';
 import 'views/home_view.dart';
 import 'package:bhbbites/widgets/provider_widget.dart';
-import 'package:bhbbites/services/auth_service.dart';
+
 
   class Home extends StatefulWidget{
   @override
@@ -15,7 +16,8 @@ import 'package:bhbbites/services/auth_service.dart';
 class _HomeState extends State<Home>{
   int _currentIndex =0;
   final List<Widget> _children = [
-    HomeView(),
+    DashboardView(),
+    //HomeView(),
     Recipepage(),
     Tipspage()
   ];
