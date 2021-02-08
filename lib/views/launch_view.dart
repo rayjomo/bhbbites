@@ -28,6 +28,7 @@ class LaunchView extends StatelessWidget {
                ),
                Text(
                  "Baby Healthy Bites",
+                 textAlign: TextAlign.center,
                  style: TextStyle(fontSize: 44, color:  Colors.black),
                ),
 
