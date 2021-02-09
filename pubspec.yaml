@@ -62,6 +62,14 @@ flutter:
     - images/bluehill.jpg
     - images/pizzahut.jpg
     - images/flipping.jpg
+    - images/pawnana.jpg
+    - images/applesauce.jpg
+    - images/banana.jpg
+    - images/sweetpotato.jpg
+    - images/dinner.jpg
+    - images/breakfast.jpg
+    - images/dessert.jpg
+    - images/pancakebites.jpg
     - assets/data.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
