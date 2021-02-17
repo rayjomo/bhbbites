@@ -24,7 +24,7 @@ class _SignUpViewState extends State<SignUpView> {
   _SignUpViewState({this.authFormType});
 
   final formKey = GlobalKey<FormState>();
-  String _email, _password, _name;
+  String _email, _password, _name, _error;
 
   void switchFormState(String state) {
     formKey.currentState.reset();
@@ -39,25 +39,42 @@ class _SignUpViewState extends State<SignUpView> {
     }
   }
 
-  void submit() async {
+  bool validate(){
     final form = formKey.currentState;
     form.save();
-    try {
-      final auth = Provider.of(context).auth;
-      if (authFormType == AuthFormType.signIn){
-        String uid = await auth.signInWithEmailAndPassword(_email, _password);
-        print("Signed In with ID $uid");
-        Navigator.of(context).pushReplacementNamed('/home');
-      } else {
-        String uid = await auth.createUserWithEmailAndPassword(_email, _password, _name);
-        print("Signed Up with New ID $uid");
-        Navigator.of(context).pushReplacementNamed('/home');
-      }
-    } catch (e) {
-      print (e);
+    if(form.validate()) {
+      form.save();
+      return true;
+    } else {
+      return false;
     }
-    }
+  }
 
+
+  void submit() async {
+    if (validate()) {
+      try {
+        final auth = Provider
+            .of(context)
+            .auth;
+        if (authFormType == AuthFormType.signIn) {
+          String uid = await auth.signInWithEmailAndPassword(_email, _password);
+          print("Signed In with ID $uid");
+          Navigator.of(context).pushReplacementNamed('/home');
+        } else {
+          String uid = await auth.createUserWithEmailAndPassword(
+              _email, _password, _name);
+          print("Signed Up with New ID $uid");
+          Navigator.of(context).pushReplacementNamed('/home');
+        }
+      } catch (e) {
+        setState(() {
+          _error = e.message;
+        });
+        print(e);
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -75,7 +92,9 @@ class _SignUpViewState extends State<SignUpView> {
         child: SafeArea(
             child: Column(
                 children: <Widget>[
-                  SizedBox(height: _height * 0.05),
+                  SizedBox(height: _height * 0.025),
+                  showAlert(),
+                  SizedBox(height: _height * 0.025),
                   buildHeaderText(),
                   SizedBox(height:  _height * 0.05),
                   Padding(
@@ -93,6 +112,37 @@ class _SignUpViewState extends State<SignUpView> {
 
       ),
     );
+  }
+
+  Widget showAlert(){
+    if(_error != null) {
+      return Container(
+        color: Colors.amberAccent,
+        width: double.infinity,
+        padding: EdgeInsets.all(8.0),
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.error_outline),
+            ),
+            Expanded(child: AutoSizeText(_error, maxLines: 3,),),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  setState(() {
+                    _error = null;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
+      );
+    }
+    return SizedBox(height: 0,);
   }
 
   AutoSizeText buildHeaderText() {
@@ -120,7 +170,7 @@ class _SignUpViewState extends State<SignUpView> {
     if (authFormType == AuthFormType.signUp) {
       textFields.add(
           TextFormField(
-            validator: EmailValidator.validate ,
+            validator: NameValidator.validate,
             style: TextStyle(fontSize: 22.0),
             decoration: buildSignUpInputDecoration("Name"),
             onSaved: (value) => _name = value,
@@ -131,6 +181,7 @@ class _SignUpViewState extends State<SignUpView> {
     }
     textFields.add(
         TextFormField(
+          validator: EmailValidator.validate,
           style: TextStyle(fontSize: 22.0),
           decoration: buildSignUpInputDecoration("Email"),
           onSaved: (value) => _email = value,
@@ -140,6 +191,7 @@ class _SignUpViewState extends State<SignUpView> {
     textFields.add(SizedBox(height: 20,));
     textFields.add(
         TextFormField(
+          validator: PasswordValidator.validate,
           style: TextStyle(fontSize: 22.0),
           decoration: buildSignUpInputDecoration("Password"),
           obscureText: true,

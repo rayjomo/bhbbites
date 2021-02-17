@@ -46,3 +46,27 @@ class EmailValidator{
     return null;
   }
 }
+
+class NameValidator{
+  static String validate(String value) {
+    if (value.isEmpty){
+      return "Fill in your name";
+    }
+    if(value.length < 2) {
+      return "Please enter in your fullname";
+    }
+    if(value.length > 50) {
+      return "Your name should be less than 50 characters";
+    }
+    return null;
+  }
+}
+
+class PasswordValidator{
+  static String validate(String value) {
+    if (value.isEmpty){
+      return "Fill in your password";
+    }
+    return null;
+  }
+}
