@@ -37,3 +37,12 @@ class AuthService {
   }
 
 }
+
+class EmailValidator{
+  static String validate(String value) {
+    if (value.isEmpty){
+      return "Fill in your email";
+    }
+    return null;
+  }
+}

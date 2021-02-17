@@ -120,6 +120,7 @@ class _SignUpViewState extends State<SignUpView> {
     if (authFormType == AuthFormType.signUp) {
       textFields.add(
           TextFormField(
+            validator: EmailValidator.validate ,
             style: TextStyle(fontSize: 22.0),
             decoration: buildSignUpInputDecoration("Name"),
             onSaved: (value) => _name = value,
