@@ -1,5 +1,7 @@
 import 'package:bhbbites/services/auth_service.dart';
+import 'package:bhbbites/views/baby_prefrences/babybio_view.dart';
 import 'package:bhbbites/views/dashboard_view.dart';
+import 'package:bhbbites/views/baby_prefrences/babybio_view.dart';
 import 'package:flutter/material.dart';
 import 'pages.dart';
 import 'views/home_view.dart';
@@ -16,7 +18,8 @@ import 'package:bhbbites/widgets/provider_widget.dart';
 class _HomeState extends State<Home>{
   int _currentIndex =0;
   final List<Widget> _children = [
-    DashboardView(),
+    BabyBioView(),
+    //DashboardView(),
     //HomeView(),
     Recipepage(),
     Tipspage()
