@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'pages.dart';
 import 'views/home_view.dart';
 import 'package:bhbbites/widgets/provider_widget.dart';
+import 'package:bhbbites/models/baby_prefrences.dart';
 
 
   class Home extends StatefulWidget{
@@ -27,6 +28,7 @@ class _HomeState extends State<Home>{
 
   @override
  Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Baby Healthy Bites"),

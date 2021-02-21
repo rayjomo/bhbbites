@@ -1,14 +1,22 @@
 class BabyPrefrences {
-  final String dateOfBirth;
-  final String gender;
-  final String allergies;
-  final String foodloves;
-
+  DateTime birthDate;
+  String gender;
+  String allergies;
+  String foodPrefrences;
 
 
   BabyPrefrences (
-      this.dateOfBirth,
+      this.birthDate,
       this.gender,
       this.allergies,
-      this.foodloves);
+      this.foodPrefrences);
+
+  Map<String, dynamic> toJson() => {
+
+      'birthDate': birthDate,
+      'gender': gender,
+      'allergies' : allergies,
+      'foodprefrences' : foodPrefrences
+
+  };
 }
